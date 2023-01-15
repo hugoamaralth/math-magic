@@ -1,0 +1,24 @@
+.App {
+  background: #333;
+  background: -webkit-radial-gradient(center, #333 60%, #010101);
+  background: -moz-radial-gradient(center, #333 60%, #010101);
+  background: radial-gradient(ellipse at center, #333 60%, #010101);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  .Main-Screen {
+    position: absolute;
+    width: 90%;
+    height: 92%;
+    border-radius: 7vw;
+    background: #30028F;
+    background: -webkit-linear-gradient(#30028F 55%, #5309e6);
+    background: -moz-linear-gradient(#30028F 55%, #5309e6);
+    background: linear-gradient(#30028F 55%, #5309e6);
+
+    &.home {
+      margin: 8% 5%;
+    }
+  }
+}

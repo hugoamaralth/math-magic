@@ -1,10 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
-function App() {
+const App: React.FC<{}> = () => {
   return (
     <div className="App">
+      <div className="Main-Screen home"></div>
     </div>
   );
 }
