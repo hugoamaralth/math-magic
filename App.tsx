@@ -1,20 +1,29 @@
-import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { AppContainer } from './styles'
+import { useFonts } from "expo-font";
 import SplashScreen from './src/components/splash-screen';
 import Routes from './src/routes';
+import GameProvider from './src/contexts/gameData';
+import { AppContainer, BackImage, BackgroundContainer } from './styles'
+import BackgroundImage from './assets/images/a.jpg';
 
 export default function App() {
-  const [isLoaded, setIsLoaded] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoaded(true);
-    }, 3000);
-  }, [])
+  let [fontLoaded] = useFonts({
+    font1: require('./assets/fonts/Audiowide-Regular.ttf'),
+    font2: require('./assets/fonts/Play-Regular.ttf'),
+    font3: require('./assets/fonts/SpecialElite-Regular.ttf')
+  });
+
+  if (!fontLoaded) return null;
+
   return (
     <AppContainer>
       <StatusBar animated={true} backgroundColor="transparent" hidden />
-      {isLoaded ? <Routes /> : <SplashScreen />}
+      <BackgroundContainer>
+        <BackImage source={BackgroundImage} />
+      </BackgroundContainer>
+      <GameProvider>
+        <Routes />
+      </GameProvider>
     </AppContainer>
   );
 }

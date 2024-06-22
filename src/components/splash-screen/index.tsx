@@ -1,18 +1,21 @@
 import React from "react";
 import { Text, View } from "react-native";
+import LottieView from "lottie-react-native";
+import LoadingJson from '../../../assets/loading.json';
 
 const SplashScreen: React.FC = () => {
     return (
         <View style={{
             width: '100%',
             height: '100%',
-            backgroundColor: '#FF0000',
+            backgroundColor: '#000E',
             justifyContent: 'center',
             alignItems: 'center'
         }}>
-            <Text style={{
-                fontSize: 50
-            }}>CARREGANDO</Text>
+            <LottieView style={{
+                width: '100%',
+                height: '100%',
+            }} source={LoadingJson} autoPlay />
         </View>
     );
 }
