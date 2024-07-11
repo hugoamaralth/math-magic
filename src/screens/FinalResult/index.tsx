@@ -5,21 +5,36 @@ import { propsStack } from '../../routes/Stack/Models';
 import { ButtonsContainer, ResultContainer, gradientStyle, textShadow } from './styles';
 import { themeColors } from '../../core/utils';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Result from '../../components/result';
+import { useAdsProvider } from '../../contexts/adsControl';
+
+type TScreens = 'Home' | 'Game';
 
 const FinalResult: React.FC = () => {
     const { getResult, resetGame } = useGameProvider();
     const { black2, blue2, red2 } = themeColors;
     const navigation = useNavigation<propsStack>();
-    const [result, setResult] = useState(0);    
+    const [clickedButton, setClickedButton] = useState<TScreens>("Game");
+    const { showInterstitial, isClosed: closedAds } = useAdsProvider();
+    useEffect(() => {
+        if (closedAds) {
+            resetGame();
+            navigation.navigate(clickedButton);
+        }
+    }, [closedAds])
+
+    const handlerButton = (button: TScreens) => {
+        setClickedButton(button);
+        showInterstitial();
+    }
 
     return (
         <ResultContainer>
             <Result answer={getResult()} />
             <ButtonsContainer>
-                <Button click={() => { resetGame(); navigation.navigate("Game"); }} title='Jogar Novamente' />
-                <Button click={() => { navigation.navigate("Home"); }} title='Inicio' />
+                <Button click={() => handlerButton('Game')} title='Jogar Novamente' />
+                <Button click={() => handlerButton('Home')} title='Inicio' />
             </ButtonsContainer>
         </ResultContainer>
     )

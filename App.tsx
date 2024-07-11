@@ -5,6 +5,7 @@ import Routes from './src/routes';
 import GameProvider from './src/contexts/gameData';
 import { AppContainer, BackImage, BackgroundContainer } from './styles'
 import BackgroundImage from './assets/images/a.jpg';
+import AdsProvider from './src/contexts/adsControl';
 
 export default function App() {
   let [fontLoaded] = useFonts({
@@ -22,7 +23,9 @@ export default function App() {
         <BackImage source={BackgroundImage} />
       </BackgroundContainer>
       <GameProvider>
-        <Routes />
+        <AdsProvider>
+          <Routes />
+        </AdsProvider>
       </GameProvider>
     </AppContainer>
   );

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, ReactNode, useState } from "react";
 import { NUMBERS } from "../core/utils";
 
 interface IGameContextData {
@@ -13,7 +13,7 @@ interface IGameContextData {
 const GameContext = createContext<IGameContextData>({} as IGameContextData);
 
 interface GameProviderData {
-    children: React.ReactNode;
+    children: ReactNode;
 }
 
 const GameProvider: React.FC<GameProviderData> = ({ children }) => {

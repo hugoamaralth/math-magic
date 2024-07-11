@@ -14,7 +14,8 @@ const Button: React.FC<IButtonProps> = ({ click, title, disabled }) => {
     const { black2, red3 } = themeColors;
     return (
         <BackGradient colors={['black', 'purple', 'purple', 'purple', 'black']} style={{
-            borderColor: 'purple',
+            borderColor: 'black',
+            elevation: 5,
             borderWidth: 1,
             borderRadius: 10,
         }}>
